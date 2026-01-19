@@ -1,7 +1,5 @@
-flask
-pandas
-numpy
-scikit-learn
-joblib
-gunicorn
-streamlit
+streamlit==1.29.0
+pandas==2.3.3
+numpy==2.4.1
+scikit-learn==1.8.0
+joblib==1.5.3
