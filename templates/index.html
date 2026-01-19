@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Predictor</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; padding-top: 50px; }
+        .container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 400px; }
+        h2 { text-align: center; color: #333; }
+        label { margin-top: 15px; display: block; font-weight: bold; color: #555; }
+        input { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; background-color: #28a745; color: white; padding: 12px; margin-top: 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #218838; }
+        .result { margin-top: 20px; padding: 15px; background-color: #e9ecef; border-left: 5px solid #28a745; text-align: center; font-size: 1.2em; color: #333; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🏠 House Price System</h2>
+    
+    <form action="/predict" method="post">
+        <label>Overall Quality (1–10)</label>
+        <input type="number" name="overall_qual" min="1" max="10" required value="5">
+
+        <label>Living Area (sq ft)</label>
+        <input type="number" name="gr_liv_area" min="300" max="6000" required value="1500">
+
+        <label>Basement Area (sq ft)</label>
+        <input type="number" name="total_bsmt_sf" min="0" max="5000" required value="800">
+
+        <label>Garage Cars (0–4)</label>
+        <input type="number" name="garage_cars" min="0" max="4" required value="2">
+
+        <label>Full Bathrooms</label>
+        <input type="number" name="full_bath" min="0" max="4" required value="2">
+
+        <label>Year Built</label>
+        <input type="number" name="year_built" min="1800" max="2025" required value="2005">
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
